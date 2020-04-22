@@ -1,3 +1,4 @@
-# Maven project skeleton
+# Knowledgehut Cucumber Labs
+## Empty project for starting the lab
 
-Directories and pom
+Contains only empty dirs and a basic pom
