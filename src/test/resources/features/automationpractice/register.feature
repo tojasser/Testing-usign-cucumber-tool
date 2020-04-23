@@ -19,7 +19,7 @@ Feature: Registration
   And Enter email address and passowrd
   Then I log in
 
-  
+
 
   #Scenario: Submit empty registration form
     #Given I am on the homepage
