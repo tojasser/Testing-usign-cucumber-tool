@@ -12,11 +12,6 @@ import java.util.logging.Level;
 import static java.util.logging.Logger.getLogger;
 
 public abstract class Page {
-    static {
-        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
-        System.setProperty("webdriver.chrome.silentOutput", "true");
-        getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
-    }
 
     private final WebDriver driver;
     private String title;
@@ -40,12 +35,14 @@ public abstract class Page {
     }
 
     protected String getText(String cssPath) {
+
         return driver.findElement(By.xpath(cssPath)).getText();
     }
 
     protected void fill(String id, String value) {
         final WebElement element = waitFor(id);
         element.clear();
+        System.out.println(value);
         element.sendKeys(value);
     }
 

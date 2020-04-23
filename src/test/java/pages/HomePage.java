@@ -15,6 +15,7 @@ public class HomePage extends Page {
     }
 
     public void signIn() {
+
         super.cssClick(PATH_SIGN_IN);
     }
 }

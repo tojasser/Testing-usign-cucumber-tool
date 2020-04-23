@@ -11,10 +11,20 @@ import pages.HomePage;
 import pages.MyAccountPage;
 import pages.RegistrationPage;
 
+import java.util.logging.Level;
+
+import static java.util.logging.Logger.getLogger;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class AutomationPracticeSteps {
+
+    static {
+        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
+        System.setProperty("webdriver.chrome.silentOutput", "true");
+        getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
+    }
+
 
     private final WebDriver driver = new ChromeDriver();
     private final User user = new User();
@@ -42,10 +52,11 @@ public class AutomationPracticeSteps {
 
     @And("I fill in the registration form")
     public void iFillInTheRegistrationForm() {
+
         registrationPage.fillInForm();
     }
 
-    @Then("I am registered and logged in")
+    @And("I am registered and logged in")
     public void iAmRegisteredAndLoggedIn() {
         assertTrue(myAccountPage.isCurrent());
     }
@@ -58,5 +69,23 @@ public class AutomationPracticeSteps {
     @Then("I will get an error")
     public void iWillGetAnError() {
         assertEquals(8, registrationPage.getErrorCount());
+    }
+
+    @Then("I sign out")
+    public void iSignOut() {
+        myAccountPage.signOut();
+
+
+    }
+
+    @And("Enter email address and passowrd")
+    public void enterEmailAddressAndPassowrd() {
+        authenticationPage.logInCredentials();
+
+    }
+
+    @Then("I log in")
+    public void iLogIn() {
+        authenticationPage.logIn();
     }
 }
